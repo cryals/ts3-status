@@ -1,0 +1,35 @@
+name: Check TeamSpeak Server Status
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'  # Запускать каждые 30 минут
+  workflow_dispatch:  # Позволяет запускать вручную из интерфейса GitHub
+
+jobs:
+  check_status:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'  # Задайте нужную версию Python
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Check Server Status
+        run: |
+          import requests
+          address = "ts.stopco.ru"
+          response = requests.get(f"https://api.cleanvoice.ru/ts3/?address={address}")
+          data = response.json()
+          can_connect = data.get("can_connect", False)
+
+          if can_connect:
+              print("Сервер онлайн!")
+          else:
+              print("Сервер офлайн.")
