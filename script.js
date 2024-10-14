@@ -1,16 +1,19 @@
 const serverAddress = "ts.stopco.ru"; // Используем URL сервера
 const statusDiv = document.getElementById('status');
 const notificationButton = document.getElementById('notification-button');
+const favicon = document.getElementById('favicon'); // Получаем элемент фавиконки
 
 // Функция для получения статуса сервера
 async function fetchServerStatus() {
     try {
+        favicon.href = "media/blue.ico"; // Изменяем фавиконку на "Загрузка"
         const response = await fetch(`https://api.cleanvoice.ru/ts3/?address=${serverAddress}`);
         const data = await response.json();
         updateStatus(data);
     } catch (error) {
         console.error('Ошибка при получении статуса сервера:', error);
         statusDiv.innerText = "Ошибка при получении статуса.";
+        favicon.href = "media/red.ico"; // Если ошибка, устанавливаем "Офлайн"
     }
 }
 
@@ -20,9 +23,11 @@ function updateStatus(data) {
         statusDiv.innerText = "Сервер онлайн!";
         console.log("Отправка уведомления о том, что сервер онлайн."); // Лог
         sendNotification("Сервер TeamSpeak онлайн!");
+        favicon.href = "media/green.ico"; // Устанавливаем фавиконку "Онлайн"
     } else {
         statusDiv.innerText = "Сервер офлайн.";
         console.log("Сервер офлайн."); // Лог
+        favicon.href = "media/red.ico"; // Устанавливаем фавиконку "Офлайн"
     }
 }
 

@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Статус сервера TeamSpeak</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link id="favicon" rel="icon" type="image/x-icon" href="media/blue.ico"> <!-- Фавиконка по умолчанию -->
 </head>
 <body>
-    <h1>Статус сервера TeamSpeak</h1>
-    <div id="status">Загрузка статуса...</div>
-    <button id="notification-button">Разрешить уведомления</button>
-
-    <script src="script.js"></script> <!-- Подключаем JavaScript -->
+    <div class="container">
+        <h1>Статус сервера TeamSpeak</h1>
+        <div id="status">Загрузка статуса...</div>
+        <button id="notification-button">Запросить разрешение на уведомления</button>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
