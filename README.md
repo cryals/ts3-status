@@ -1,5 +1,3 @@
-# Статус сервера TeamSpeak
-
 <div align="center">
     <h1>Статус сервера TeamSpeak</h1>
     <img src="media/green.ico" alt="Сервер онлайн" width="50" height="50">
