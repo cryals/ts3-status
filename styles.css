@@ -1,30 +1,132 @@
+/* Основные стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #121212;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1c1c1c;
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+header {
+    width: 100%;
     text-align: center;
-    padding: 50px;
+    position: relative;
+    overflow: hidden;
 }
 
-.container {
-    max-width: 600px;
-    margin: auto;
+.banner {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    animation: slideIn 2s ease-out;
+}
+
+.main-title {
+    font-size: 3em;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    animation: fadeIn 3s ease-in;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0;
+}
+
+#status-container {
     padding: 20px;
-    border-radius: 8px;
-    background-color: #1e1e1e;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.5s ease-in-out;
 }
 
-button {
+.notify-btn {
     background-color: #007bff;
     border: none;
     color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 15px 30px;
+    border-radius: 25px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1.2em;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-button:hover {
+.notify-btn:hover {
     background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+footer {
+    margin-top: auto;
+    padding: 20px;
+    background-color: #101010;
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.status-online #status-container {
+    background-color: rgba(0, 128, 0, 0.5);
+}
+
+.status-offline #status-container {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.status-loading #status-container {
+    background-color: rgba(0, 0, 255, 0.5);
+}
+
+/* Анимация уведомлений */
+.notify-popup {
+    opacity: 0;
+    animation: notifyFadeIn 1s ease forwards;
+}
+
+@keyframes notifyFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

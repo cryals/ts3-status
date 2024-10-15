@@ -8,11 +8,22 @@
     <link id="favicon" rel="icon" type="image/x-icon" href="media/blue.ico"> <!-- Фавиконка по умолчанию -->
 </head>
 <body>
-    <div class="container">
-        <h1>Статус сервера TeamSpeak</h1>
-        <div id="status">Загрузка статуса...</div>
-        <button id="notification-button">Запросить разрешение на уведомления</button>
+    <header>
+        <img src="media/mexi.png" alt="Mexi Banner" class="banner">
+        <h1 class="main-title">TeamSpeak Server Status</h1>
+    </header>
+
+    <div class="content">
+        <div id="status-container" class="status-loading">
+            <div id="status">Загрузка статуса...</div>
+        </div>
+        <button id="notification-button" class="notify-btn">Запросить разрешение на уведомления</button>
     </div>
+
+    <footer>
+        <p>💗 By AL-S for @you 💗</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
